@@ -12,8 +12,5 @@ call plug#begin()
 runtime! ./plugins/*.vim
 call plug#end()
 
-let g:rustfmt_autosave = 1
-let g:rustfmt_command = 'rustup run nightly rustfmt'
-
 colorscheme elly
 set termguicolors
