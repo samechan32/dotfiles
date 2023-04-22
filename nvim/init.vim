@@ -18,3 +18,6 @@ let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
 
 colorscheme tokyonight
+
+"move between windows
+nnoremap <Return><Return> <c-w><c-w>
