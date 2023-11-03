@@ -10,6 +10,10 @@ require("packer").startup(function()
 	use { 'nvim-treesitter/nvim-treesitter',
 		  { run = ":TSUpdate" } 
 	  	}
+	use {
+		'windwp/nvim-autopairs',
+    	config = function() require("nvim-autopairs").setup {} end
+	}
 	-- LSP
 	use { 'neovim/nvim-lspconfig' }
 	use { 'williamboman/mason.nvim' }
@@ -57,3 +61,7 @@ require('mason-lspconfig').setup_handlers({ function(server)
   require('lspconfig')[server].setup(opt)
 end })
 
+-- LSP handlers
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = true }
+)
