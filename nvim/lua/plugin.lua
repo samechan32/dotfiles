@@ -42,10 +42,27 @@ vim.g.rustfmt_autosave = 1
 vim.g.rustfmt_command = 'rustup run nightly rustfmt'
 
 --LSP
-require('cmp').setup {
+local cmp = require('cmp')
+cmp.setup {
+  preselect = cmp.PreselectMode.None,
+      -- スニペットの設定
+      snippet = {
+        expand = function(args)
+          vim.fn["vsnip#anonymous"](args.body)
+      end,
+  },
   sources = {
     { name = 'nvim_lsp' }
-  }
+  },
+  mapping = cmp.mapping.preset.insert({
+    ["<C-p>"] = cmp.mapping.select_prev_item(),
+    ["<C-n>"] = cmp.mapping.select_next_item(),
+    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.close(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+  }),
 }
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
