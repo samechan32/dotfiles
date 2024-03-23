@@ -4,7 +4,16 @@ require("packer").startup(function()
 	use { 'wbthomason/packer.nvim' }
 	use { 'nvim-telescope/telescope.nvim' }
 	use { 'nvim-lua/plenary.nvim' }
-	use { 'ghifarit53/tokyonight-vim' }
+	use { 
+		'ghifarit53/tokyonight-vim', 
+			config = function() require("tokyonight").setup ({
+				transparent = true,
+				styles = {
+					sidebars = "transparent",
+					floats = "transparent",
+				},
+			}) end
+		}
 	use { 'lambdalisue/fern.vim'}
 	use { 'rust-lang/rust.vim' }
 	use { 'nvim-treesitter/nvim-treesitter',
@@ -21,10 +30,12 @@ require("packer").startup(function()
 	use { 'hrsh7th/nvim-cmp' }
   	use { 'hrsh7th/cmp-nvim-lsp' } 
   	use { 'hrsh7th/vim-vsnip' }
+	use { 'hrsh7th/cmp-path' }
 end)
 
 -- colorthemet
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd([[colorscheme tokyonight]])
+
 
 -- telescope
 vim.cmd [[
@@ -52,7 +63,8 @@ cmp.setup {
       end,
   },
   sources = {
-    { name = 'nvim_lsp' }
+    { name = 'nvim_lsp' },
+	{ name = 'path' }
   },
   mapping = cmp.mapping.preset.insert({
     ["<C-p>"] = cmp.mapping.select_prev_item(),
