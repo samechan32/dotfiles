@@ -8,3 +8,6 @@ vim.api.nvim_set_keymap('n','<leader>fh','<cmd>Telescope help_tags<cr>',{ norema
 
 -- Fern
 vim.api.nvim_set_keymap('n', '<C-p>', ':Fern . <CR>',{ noremap = true})
+
+-- toggleterm
+vim.api.nvim_set_keymap('n', '<C-\\>', ':ToggleTerm <CR>',{ noremap = true})

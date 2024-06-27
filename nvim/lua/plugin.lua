@@ -23,6 +23,9 @@ require("packer").startup(function()
 		'windwp/nvim-autopairs',
     	config = function() require("nvim-autopairs").setup {} end
 	}
+	use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+  		require("toggleterm").setup()
+	end}
 	-- LSP
 	use { 'neovim/nvim-lspconfig' }
 	use { 'williamboman/mason.nvim' }
@@ -32,6 +35,17 @@ require("packer").startup(function()
   	use { 'hrsh7th/vim-vsnip' }
 	use { 'hrsh7th/cmp-path' }
 end)
+
+require("toggleterm").setup{
+  open_mapping = [[<c-\>]],
+  shade_terminals = false,
+  direction = 'float',
+  float_opts = {
+    border = 'curved',
+    winblend = 3,
+  }
+}
+
 
 -- colorthemet
 vim.cmd([[colorscheme tokyonight]])
