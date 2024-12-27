@@ -14,7 +14,6 @@ for k, v in pairs(options) do
 end
 
 
-vim.o.nobackup = true
 vim.o.swapfile = false
 
 vim.cmd("augroup MyAutoCmds")
@@ -24,6 +23,6 @@ vim.cmd("autocmd ColorScheme * highlight NonText guibg=NONE ctermbg=NONE gui=NON
 vim.cmd("autocmd ColorScheme * highlight Folded guibg=NONE ctermbg=NONE gui=NONE cterm=NONE")
 vim.cmd("autocmd ColorScheme * highlight EndOfBuffer guibg=NONE ctermbg=NONE gui=NONE cterm=NONE")
 vim.cmd("autocmd ColorScheme * highlight LineNr guifg=230 ctermbg=NONE")
-vim.cmd('autocmd ColorScheme * highlight comment guifg=230 ctermbg=NONE')
+vim.cmd('autocmd ColorScheme * highlight comment guifg=230')
 vim.cmd("augroup END")
 
